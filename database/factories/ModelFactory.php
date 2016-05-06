@@ -11,11 +11,26 @@
 |
 */
 
-$factory->define(CodeProject\User::class, function (Faker\Generator $faker) {
+$factory->define(CodeProject\Models\User::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->name,
         'email' => $faker->safeEmail,
         'password' => bcrypt(str_random(10)),
         'remember_token' => str_random(10),
+    ];
+});
+
+
+/**
+ * Client Factory
+ */
+$factory->define(CodeProject\Models\Client::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->company,
+        'responsible' => $faker->name,
+        'email' => $faker->safeEmail,
+        'phone' => $faker->phoneNumber,
+        'address' => $faker->address,
+        'obs' => $faker->sentence,
     ];
 });
